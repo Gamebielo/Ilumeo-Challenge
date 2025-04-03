@@ -1,0 +1,25 @@
+# Python
+backend/venv/
+*.pyc
+__pycache__/
+
+# FastAPI logs/cache
+*.log
+
+# Node.js
+ilumeo-dashboard/node_modules/
+*.env
+
+# VS Code
+.vscode/
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+
+# Arquivos temporários
+*.swp
+*.swo
+
+# Docker volumes (se algum for criado como bind mount)
+pgdata/

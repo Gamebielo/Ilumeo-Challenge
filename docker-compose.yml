@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15
+    container_name: ilumeo_postgres
+    environment:
+      POSTGRES_USER: ilumeo
+      POSTGRES_PASSWORD: ilumeo123
+      POSTGRES_DB: ilumeo_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./docker/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  api:
+    build: ./backend
+    container_name: ilumeo_api
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    environment:
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_NAME: ilumeo_db
+      DB_USER: ilumeo
+      DB_PASS: ilumeo123
+
+volumes:
+  pgdata:
+    name: ilumeo_pgdata
