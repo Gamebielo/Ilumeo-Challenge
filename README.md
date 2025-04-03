@@ -125,7 +125,30 @@ ilumeo-desafio/
 
 ---
 
+## 📋 Detalhamento do Desenvolvimento
+
+### 🏗️ Arquitetura
+- **Backend modularizado** com FastAPI, rotas separadas em `routers/`
+- **Frontend isolado** em pasta dedicada com Vite para build rápido e leve
+- **Docker Compose** para facilitar setup local com PostgreSQL e API
+
+### ⚙️ Otimizações
+- A API só considera conversões reais (`response_status_id = 6`) para evitar distorções nos dados
+- **Consultas agregadas otimizadas com GROUP BY + filtros SQL**
+- Campo `created_at` com valores aleatórios para simular distribuição real no tempo
+
+### 🔄 Trade-offs
+- O **frontend não foi dockerizado** por simplicidade durante o desenvolvimento, mas pode ser incluído com um `Dockerfile` adicional
+- O arquivo `init.sql` **não foi versionado por conter dados massivos (>300MB)**, mas sua estrutura está documentada com orientações claras
+
+### 📌 Justificativas Técnicas
+- **FastAPI** foi escolhido pela performance, facilidade de documentação (Swagger automático) e produtividade
+- **React com Vite** foi usado para interface moderna e leve, com ótimo DX
+- **Pytest** por ser simples, rápido e bem integrado ao ecossistema Python
+- **Recharts** pela facilidade de criar gráficos responsivos e personalizáveis
+
+---
+
 ## 📅 Autor
 
 Desenvolvido para o desafio Ilumeo por [Gabriel Carvalho].
-
